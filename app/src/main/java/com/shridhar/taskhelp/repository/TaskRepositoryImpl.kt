@@ -11,8 +11,9 @@ class TaskRepositoryImpl(
     override fun getTasks(): Flow<List<Task>> =
         dao.getAllTasks().map { entities -> entities.map(TaskEntity::toTask) }
 
-    override suspend fun addTask(task: Task) {
-        dao.insertTask(task.toEntity())
+    override suspend fun addTask(task: Task): Task {
+        val id = dao.insertTask(task.toEntity())
+        return task.copy(id = id)
     }
 
     override suspend fun updateTask(task: Task) {
