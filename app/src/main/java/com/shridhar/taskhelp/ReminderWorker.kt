@@ -4,6 +4,7 @@ import android.app.NotificationManager
 import android.app.NotificationChannel
 import android.content.Context
 import android.os.Build
+import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
@@ -14,6 +15,7 @@ class ReminderWorker(
 ) : CoroutineWorker(appContext, workerParams) {
 
     override suspend fun doWork(): Result {
+        Log.i("worker","work exec")
         val title = inputData.getString("title") ?: return Result.failure()
         val description = inputData.getString("description") ?: ""
 
