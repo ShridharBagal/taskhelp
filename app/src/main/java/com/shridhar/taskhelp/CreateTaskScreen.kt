@@ -60,7 +60,7 @@ fun CreateTaskScreen(
 
         Button(onClick = { showDatePicker = true }) {
             Text(if (dueDateMillis != null)
-                "Due: ${DateFormat.getDateTimeInstance().format(Date(dueDateMillis!!))}"
+                "Due: ${DateFormat.getDateInstance().format(Date(dueDateMillis!!))}"
             else "Pick Due Date")
         }
 
